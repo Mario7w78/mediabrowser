@@ -8,7 +8,7 @@ export default function AddButton() {
 
     return ( 
             <>
-            <div className="row-span-3 border-r-1 border-gray-600 grid grid-row-10 relative justify-center">
+            <div className="row-start-2 row-span-7 border-r-1 border-gray-600 grid grid-row-10 relative justify-center">
                 <button onClick={handleClick} className="w-15 h-15 my-10 cursor-pointer text-5xl flex justify-center items-baseline ">+</button>
                 {createDir && 
                 <div >
