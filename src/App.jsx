@@ -1,12 +1,19 @@
-import AddButton from "./components/addButton/Addbutton"
+import { useSelector } from "react-redux"
 import Base from "./components/base/base"
-
+import CreateDir from "./components/CreateDir/CreateDir"
 
 function App() {
-
+  const isOpen = useSelector(state => state.dircreate)
+  console.log(isOpen)
   return (
     <>
-    <Base/>
+    <Base>
+    {
+      isOpen &&
+      <CreateDir/>
+    }
+    </Base>
+    
     </>
   )
 }
