@@ -13,11 +13,11 @@ function VerticalBar(){
     dispatch(appearCreate(!isOpen))
   }
   return (
-    <div className="border-gray-600 border-r-2 row-span-9 grid grid-rows-10 justify-center gap-2 my-5">
+    <div className="border-gray-600 border-r-2 row-span-9 flex flex-col items-center gap-4 overflow-y-auto hide-scroll">
       {directories.map(dir => (
         <Directory url = {dir.imgurl} name = {dir.name}/>
       ))}
-      <button className = "cursor-pointer my-5 h-15 w-15 pb-2 text-5xl text-gray-400 bg-gray-700 rounded-full flex justify-center items-center" onClick={handleClick}>+</button>
+      <button className = "cursor-pointer my-5 h-16 w-16 pb-2 text-5xl text-gray-400 bg-gray-700 rounded-full flex justify-center items-center" onClick={handleClick}>+</button>
     </div>
   )
  

@@ -22,9 +22,11 @@ function CreateDir(){
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setPreview(imageUrl);
+      setDir({
+        ...dir,
+        imgurl: imageUrl,
+      });
     }
-    handleChange(e)
-    
   };
 
 

@@ -5,8 +5,8 @@ function Directory({url, name}){
     url = "/default.svg"
   }
   return (
-    <div className="cursor-pointer h-15 w-15 rounded-full ">
-      <img src={url}/>
+      <div className="cursor-pointer max-h-16 max-w-16 min-h-16 min-w-16 rounded-full overflow-hidden ">
+      <img className="w-full h-full object-cover" alt={name} src={url}/>
     </div>
   )
 }
