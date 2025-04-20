@@ -45,19 +45,19 @@ function CreateDir(){
     })
   }
   return (
-    <form className="absolute font-mono bg-gray-600 border-2 border-gray-400 row-start-4 col-start-5 z-10 row-span-4 col-span-1  p-4 flex flex-col rounded-4xl gap-2">
+    <form onSubmit={handleCreate} className="absolute font-mono bg-gray-800 border-2 border-gray-400 row-start-4 col-start-5 z-10 row-span-4 col-span-1  p-4 flex flex-col rounded-4xl gap-2">
 
       <input onChange={handleFileChange} className ="hidden" type="file" id="cover" name= "imgurl" accept=".jpg, .png" />
 
       <label htmlFor="cover" className="overflow-hidden cursor-pointer self-center size-20 bg-gray-700 rounded-full flex justify-center items-center">
-        <img className = "w-full h-full object-contain" src={preview}  />
+        <img className = "w-full h-full object-cover" src={preview}  />
       </label>
 
-      <label htmlFor="name">Directory:</label>
+      <label className="text-gray-50" htmlFor="name">Directory:</label>
 
       <input onChange={handleChange} className = "bg-gray-400 border-2 border-gray-200  rounded-3xl p-1 pl-1.5" type="text" name="name" required placeholder="Directory name.."/>
 
-      <button onClick={handleCreate} className="bg-gray-400 border-1 border-gray-800 rounded-3xl cursor-pointer">Create</button>
+      <button type="submit" className="bg-gray-400 border-1 border-gray-800 rounded-3xl cursor-pointer">Create</button>
 
       <button onClick={handleClick} className="bg-gray-400 border-1 border-gray-800 rounded-3xl cursor-pointer">Cancel</button>
 

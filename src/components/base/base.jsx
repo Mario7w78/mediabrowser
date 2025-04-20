@@ -8,15 +8,21 @@ function Base(){
   console.log(isOpen)
   
   return (
-    <div className="relative bg-gray-800 w-screen h-screen grid grid-cols-10 grid-rows-10">
+    <div className="relative bg-gray-900 w-screen h-screen grid grid-cols-10 grid-rows-10">
+
       {
       isOpen &&
       <CreateDir/>
       }
-      <div className="col-span-10 grid grid-cols-10">
-        <div className="flex justify-center items-center"><img className="row-start-1 col-start-1 size-10 " src="/icon.svg"/></div>
+
+      <div className="border-b-1 border-gray-600 col-span-10 grid grid-cols-10 ">
+
+        <div className="flex justify-center items-center">
+          <img className="row-start-1 col-start-1 size-10 " src="/icon.svg"/>
+          </div>
         
-        <input className="col-start-2 col-span-8 h-10 self-center border-1 border-gray-500 pl-2 text-gray-200" type="text" placeholder="Media-Browser/" />
+        <input className="bg-gray-800 col-start-2 col-span-8 h-10 self-center border-1 border-gray-500 pl-2 text-gray-100" type="text" placeholder="Media-Browser/" />
+
       </div>
       
       <VerticalBar/>
