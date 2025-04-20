@@ -13,9 +13,14 @@ function Base(){
       isOpen &&
       <CreateDir/>
       }
-      <div className="border-1 col-span-10">1</div>
+      <div className="col-span-10 grid grid-cols-10">
+        <div className="flex justify-center items-center"><img className="row-start-1 col-start-1 size-10 " src="/icon.svg"/></div>
+        
+        <input className="col-start-2 col-span-8 h-10 self-center border-1 border-gray-500 pl-2 text-gray-200" type="text" placeholder="Media-Browser/" />
+      </div>
+      
       <VerticalBar/>
-      <div className="row-span-9 col-span-9">3</div>
+      <div className="row-span-9 col-span-9"></div>
       
     </div>
   )
