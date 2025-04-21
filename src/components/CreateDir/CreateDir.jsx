@@ -1,7 +1,9 @@
 import { useDispatch } from "react-redux"
 import { appearCreate } from "../../features/Dir/dirCreateSlice"
 import { useState } from "react";
-import { addDir } from "../../features/Dir/crudDir";
+import { addDir, turnFalse } from "../../features/Dir/crudDir";
+import {v4 as uid} from 'uuid'
+
 
 function CreateDir(){
   const dispatch = useDispatch()
@@ -9,7 +11,11 @@ function CreateDir(){
 
   const [dir, setDir] = useState({
     imgurl: "",
-    name: ""
+    name: "",
+    id: "",
+    selected: false,
+    pages: []
+    
   })
 
   const handleClick = (e) => {
@@ -30,20 +36,25 @@ function CreateDir(){
   };
 
 
-  const handleCreate = (e)=>{
-    e.preventDefault()
-    dispatch(addDir({
-      ...dir,
-    }))
-    dispatch(appearCreate(false))
-  }
-
   const handleChange = (e) =>{
     setDir({
       ...dir,
       [e.target.name]: e.target.value
     })
   }
+
+  const handleCreate = (e)=>{
+    e.preventDefault()
+    const newId = uid()
+    dispatch(addDir({
+      ...dir,
+      id: newId,
+      selected: true,
+    }))
+    dispatch(appearCreate(false))
+    dispatch(turnFalse(newId))
+  }
+
   return (
     <form onSubmit={handleCreate} className="absolute font-mono bg-gray-800 border-2 border-gray-400 row-start-4 col-start-5 z-10 row-span-4 col-span-1  p-4 flex flex-col rounded-4xl gap-2">
 

@@ -1,6 +1,7 @@
 import VerticalBar from "../VerticalBar/VerticalBar"
 import CreateDir from "../CreateDir/CreateDir"
 import { useSelector } from "react-redux"
+import Menu from "../menu/menu"
 
 
 function Base(){
@@ -26,7 +27,7 @@ function Base(){
       </div>
       
       <VerticalBar/>
-      <div className="row-span-9 col-span-9"></div>
+      <Menu/>
       
     </div>
   )

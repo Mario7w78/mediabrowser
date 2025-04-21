@@ -7,9 +7,8 @@ const dirCreateSlice = createSlice({
   reducers:{
     appearCreate: (state, action) => {
       return action.payload
-      
-    }
-  }
+    },
+}
 
 })
 

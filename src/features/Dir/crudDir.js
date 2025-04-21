@@ -4,6 +4,14 @@ const initialState =[
   {
     imgurl: "/default.svg",
     name: "Classic Pages",
+    id: "1",
+    selected: true,
+    pages: [
+      {
+        pagename: "Ulima",
+        pageurl: "https://ulima.edu.pe"
+      }
+    ]
   }
 ] 
 
@@ -14,12 +22,23 @@ const crudDir = createSlice({
   reducers: {
     addDir: (state, action) => {
       state.push(action.payload)
-      console.log(action)
 
+    },
+
+    turnFalse: (state,action) => {
+      state.forEach(dir =>{
+        if (dir.id != action.payload){
+          dir.selected = false
+        }else{
+          dir.selected = true
+        }
+      })
     }
+
+
   }
 
 })
 
-export const {addDir} = crudDir.actions
+export const {addDir, turnFalse, turnTrue} = crudDir.actions
 export default crudDir.reducer
