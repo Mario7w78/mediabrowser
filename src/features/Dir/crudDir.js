@@ -8,9 +8,23 @@ const initialState =[
     selected: true,
     pages: [
       {
-        pagename: "Ulima",
-        pageurl: "https://ulima.edu.pe"
-      }
+        pagename: "Blackboard Ulima",
+        pageurl: "https://ulima.blackboard.com/ultra/stream",
+        description: "Plataforma de cursos virtuales de la Universidad de Lima"
+      },
+      {
+        pagename: "MiUlima",
+        pageurl: "https://webaloe.ulima.edu.pe/portalUL/inicio.jsp",
+        description: "Portal de alumnos de la Universidad de Lima"
+
+      },
+      {
+        pagename: "Google Drive",
+        pageurl: "https://drive.google.com/",
+        description: "Almacenamiento en la nube de Google"
+      },
+
+      
     ]
   }
 ] 
