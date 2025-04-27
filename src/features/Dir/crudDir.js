@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { act } from "react"
 
 const initialState =[
   {
@@ -47,12 +48,22 @@ const crudDir = createSlice({
           dir.selected = true
         }
       })
+    },
+
+    savePage: (state, action) => {
+      state.forEach(dir => {
+        if (dir.id == action.payload.id) {
+          if (!action.payload.page.pageurl.startsWith("https://")){
+            action.payload.page.pageurl = "https://" + action.payload.page.pageurl;
+            
+          }
+          dir.pages.push(action.payload.page)
+        }
+      })
     }
+    
 
+}})
 
-  }
-
-})
-
-export const {addDir, turnFalse, turnTrue} = crudDir.actions
+export const {addDir, turnFalse, turnTrue, savePage} = crudDir.actions
 export default crudDir.reducer
