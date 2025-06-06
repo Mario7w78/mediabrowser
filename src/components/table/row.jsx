@@ -8,7 +8,7 @@ function Row({page, rowkey}){
             
             <td className="border flex text-purple-500 border-gray-400 h-full min-w-10">
               <a className = "w-full h-full px-3 flex justify-center items-center hover:bg-gray-700" target="_blank" rel="noopener noreferrer" href={page.pageurl}>
-                <img className="h-5" src="redirect.svg"/>
+                <img className="h-5" src="/redirect.svg"/>
               </a>
             </td>
 

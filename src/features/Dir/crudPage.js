@@ -1,5 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const API_URL = 'https://localhost:3000/';
+
+const getDirectories = async()=>{
+  try{
+
+    const response = await fetch(`${API_URL}directories`)
+    return await response.json();
+
+  }catch(e){
+
+    console.error("Error en mostrar directories:", e);
+    throw e;
+
+  }
+}
+
 const initialState = [
   {
     directoryid: "1",

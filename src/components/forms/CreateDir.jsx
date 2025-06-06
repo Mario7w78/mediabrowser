@@ -1,26 +1,30 @@
-import { useDispatch } from "react-redux"
-import { appearCreate } from "../../features/Dir/dirCreateSlice"
 import { useState } from "react";
-import { addDir, turnFalse } from "../../features/Dir/crudDir";
+import useDirStore from "../../app/Directorystore";
 import {v4 as uid} from 'uuid'
+import { useNavigate } from "react-router-dom";
+
 
 
 function CreateDir(){
-  const dispatch = useDispatch()
   const [preview, setPreview] = useState("/edit.svg");
+  const addDirectory = useDirStore(state => state.addDirectory);
+  const directories = useDirStore(state => state.directories);
+  const navigate = useNavigate();
 
   const [dir, setDir] = useState({
     imgurl: "",
     name: "",
-    id: "",
-    selected: false,
-    pages: []
+    id: ""
     
   })
 
+  const latestDir = ()=>{
+    return directories[directories.length - 1];
+  }
+
   const handleClick = (e) => {
     e.preventDefault()
-    dispatch(appearCreate(false))
+    navigate(`/media/${latestDir().id}`);
   }
 
   const handleFileChange = (e) => {
@@ -45,14 +49,15 @@ function CreateDir(){
 
   const handleCreate = (e)=>{
     e.preventDefault()
-    const newId = uid()
-    dispatch(addDir({
+    const newId = uid();    
+
+    addDirectory({
       ...dir,
       id: newId,
-      selected: true,
-    }))
-    dispatch(appearCreate(false))
-    dispatch(turnFalse(newId))
+    })
+
+    navigate(`/media/${latestDir().id}`);
+    
   }
 
   return (

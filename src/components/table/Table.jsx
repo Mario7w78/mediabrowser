@@ -1,31 +1,25 @@
-import { useSelector, useDispatch } from "react-redux";
-import { appearCreatePage } from "../../features/createPageUI";
-import CreatePage from "../menu/CreatePage";
 import Row from "./row";
+import usePageStore from "../../app/Pagestore";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 function Table() {
-  const directories = useSelector((state) => state.cruddir);
-  const pages = useSelector((state) => state.crudpage);
-  const isOpen = useSelector((state) => state.createpageui);
 
-  const dirSelected = directories.find((dir) => dir.selected === true);
-  const directoryPages = pages.filter(
-    (page) => dirSelected && page.directoryid === dirSelected.id
-  );
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const location = useLocation();
 
-  console.log(directoryPages)
-
-  const dispatch = useDispatch();
-
+  const pages = usePageStore((state) => state.pages);
+  const directoryPages = pages.filter((page) => page.directoryid === id);
+  
   const headerStyle = "border text-purple-100 border-gray-400";
 
   const handleClick = () => {
-    dispatch(appearCreatePage(!isOpen));
-  };
+    navigate(`/media/newPage/${id}`, { state: { backgroundLocation: location } });
+  }
 
   return (
-    <div className="w-full relative">
-      <table className="font-mono border-collapse border border-gray-400 w-full text-center text-gray-200 font-weight-bold h-[20px]">
+    <div className="relative flex w-[90vw] h-[90vh] justify-center p-10">
+      <table className="w-full font-mono border-collapse border border-gray-400 text-center text-gray-200 font-weight-bold h-[20px]">
         <thead>
           <tr className="h-12">
             <th className={headerStyle}>Page Name </th>
@@ -51,9 +45,7 @@ function Table() {
           </tr>
         </tbody>
       </table>
-
-      {isOpen && <CreatePage />}
-    </div>
+      </div>
   );
 }
 

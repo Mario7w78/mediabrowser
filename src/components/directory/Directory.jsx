@@ -1,15 +1,20 @@
-import { useDispatch } from "react-redux";
-import { turnFalse } from "../../features/Dir/crudDir";
-
+import useDirStore from "../../app/Directorystore"
+import { useNavigate } from "react-router-dom"
 
 function Directory({url, name, id}){
+
+    const directories = useDirStore((state)=>state.directories);
+    const setCurrentDirectory = useDirStore((state)=>state.setCurrentDirectory)
+  
+  const navigate = useNavigate();
   if (!url){
     url = "/default.svg"
   }
 
-  const dispatch = useDispatch()
   const handleClick = () => {
-    dispatch(turnFalse(id))
+    setCurrentDirectory(directories.find((dir)=>dir.id === id))
+    navigate(`/media/${id}`);
+
   }
  
 
