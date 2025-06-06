@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { appearCreatePage } from "../../features/createPageUI";
-import { savePage } from "../../features/Dir/crudDir";
+import {addPage} from "../../features/Dir/crudPage"
 import { useState } from "react";
 
 function CreatePage() {
+
     const dispatch = useDispatch()
     const directories = useSelector(state => state.cruddir)
     const dirSelected = directories.find(dir => dir.selected === true)
 
-
     const [page, setPage] = useState({
+        directoryid: dirSelected.id,
         pagename: "",
         pageurl: "",
         description: "",        
@@ -30,7 +31,7 @@ function CreatePage() {
     const handleCreate = (e) => {
         e.preventDefault()
         dispatch(appearCreatePage(false))
-        dispatch(savePage({id: dirSelected.id, page: page}))
+        dispatch(addPage({...page}))
     }
 
 
@@ -47,9 +48,11 @@ function CreatePage() {
 
             <label className="text-gray-100" htmlFor="pagename">
                 Description
-                    <span className="text-[12px] text-gray-300">
-                    (optional)
-                    </span>:</label>
+                <span className="text-[12px] text-gray-300">
+                (optional)
+                </span>:
+            </label>
+            
             <input onChange={handleChange} className="bg-gray-400 border-2 border-gray-200 px-3 rounded-4xl" type="text" name="description"/>
 
             <button  className="bg-gray-400 mt-2 rounded-4xl" >Create</button>
